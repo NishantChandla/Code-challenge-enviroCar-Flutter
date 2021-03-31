@@ -6,9 +6,10 @@ enviroCar Flutter application.
 
 Base for enviroCar Cross platfrom application.
 ## Features
-  Signin
-  SignUp
+ * Signin
+ * SignUp
 
+```sh
 │   main.dart
 │
 ├───blocs
@@ -37,3 +38,4 @@ Base for enviroCar Cross platfrom application.
         sign_in_screen.dart
         sign_up_screen.dart
         splash_screen.dart
+```
