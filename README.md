@@ -4,7 +4,7 @@ enviroCar Flutter application.
 
 ## Coding challenge
 
-Base for enviroCar Cross platfrom application.
+Base for enviroCar Cross platform application.
 ## Features
  * Signin
  * SignUp
