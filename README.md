@@ -2,15 +2,40 @@
 
 enviroCar Flutter application.
 
-## Getting Started
+## Coding challenge
 
-This project is a starting point for a Flutter application.
+Base for enviroCar Cross platform application.
+## Features
+ * Signin
+ * SignUp
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+│   main.dart
+│
+├───blocs
+│   ├───sign_in_bloc
+│   │       sign_in_bloc.dart
+│   │       sign_in_event.dart
+│   │       sign_in_state.dart
+│   │
+│   └───sign_up_bloc
+│           sign_up_bloc.dart
+│           sign_up_event.dart
+│           sign_up_state.dart
+│
+├───config
+│       app_constants.dart
+│
+├───models
+│       user.dart
+│
+├───repositories
+│       authentication_repository.dart
+│       base_repository.dart
+│
+└───screens
+        home_screen.dart
+        sign_in_screen.dart
+        sign_up_screen.dart
+        splash_screen.dart
+```
