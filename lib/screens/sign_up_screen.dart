@@ -65,10 +65,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             TextFormField(
               controller: tokenCon,
               decoration: InputDecoration(hintText: "Password"),
+              obscureText: true,
             ),
             TextFormField(
-              controller: tokenCon,
               decoration: InputDecoration(hintText: "Confirm Password"),
+              obscureText: true,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
