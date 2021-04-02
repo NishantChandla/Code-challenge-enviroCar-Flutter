@@ -1,5 +1,6 @@
 import 'package:envirocar/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:envirocar/models/user.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,11 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
+  bool isAcceptedTerms = false;
+  bool isAcceptedPrivacy = false;
+  TextEditingController nameCon = TextEditingController();
+  TextEditingController emailCon = TextEditingController();
+  TextEditingController tokenCon = TextEditingController();
 
   Future<void> _widgetSuccessfulAuthenticated() async {
     return showDialog<void>(
@@ -37,10 +43,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _signUpForm([User data]) {
-    TextEditingController nameCon = TextEditingController();
-    TextEditingController emailCon = TextEditingController();
-    TextEditingController tokenCon = TextEditingController();
-
     if (data != null) {
       nameCon.text = (data.name);
       emailCon.text = data.email;
@@ -68,6 +70,62 @@ class _SignUpScreenState extends State<SignUpScreen> {
               controller: tokenCon,
               decoration: InputDecoration(hintText: "Confirm Password"),
             ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              alignment: Alignment.center,
+              child: CheckboxListTile(
+                value: isAcceptedTerms,
+                onChanged: (val) {
+                  setState(() {
+                    isAcceptedTerms = !isAcceptedTerms;
+                  });
+                },
+                title: new RichText(
+                  text: TextSpan(
+                      style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                      children: [
+                        TextSpan(
+                            text:
+                                'I acknowledge I have read and agree to enviroCar\'s'),
+                        TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // TODO:
+                            },
+                          text: ' Terms and Conditions',
+                        ),
+                      ]),
+                ),
+                controlAffinity: ListTileControlAffinity.leading,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              alignment: Alignment.center,
+              child: CheckboxListTile(
+                value: isAcceptedPrivacy,
+                onChanged: (val) {
+                  setState(() {
+                    isAcceptedPrivacy = !isAcceptedPrivacy;
+                  });
+                },
+                title: new RichText(
+                  text: TextSpan(
+                      style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                      children: [
+                        TextSpan(text: 'I taken note of'),
+                        TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // TODO:
+                            },
+                          text: ' Privacy Statement',
+                        ),
+                      ]),
+                ),
+                controlAffinity: ListTileControlAffinity.leading,
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
@@ -81,8 +139,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           name: nameCon.text,
                           email: emailCon.text,
                           token: tokenCon.text,
-                          acceptedTerms: true,
-                          acceptedPrivacy: true));
+                          acceptedTerms: isAcceptedTerms,
+                          acceptedPrivacy: isAcceptedPrivacy));
                   // _widgetLoading();
                 },
                 child: Text("Submit"),
